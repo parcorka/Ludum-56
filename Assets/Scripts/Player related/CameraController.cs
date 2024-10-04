@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
+using Unity.VisualScripting;
 using UnityEngine;
+using DG.Tweening;
 
 public class CameraController : MonoBehaviour
 {
@@ -14,15 +17,16 @@ public class CameraController : MonoBehaviour
     //public float throwForce = 5;
     //public GameObject impactEffect; // Particle shooting
 
-    public float tiltAmount = 5f;
-    //private float tilt_z = 0f;
+    public float tilt_z = 4f;
     public KeyCode leftKey = KeyCode.A; //A is default
     public KeyCode rightKey = KeyCode.D; //D is default
+    public GunFollowUp gun;
 
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        //StartCoroutine(CameraTilt());
     }
 
     /*private void OnLevelWasLoaded(int level) // lockin when out of menu scene
@@ -36,6 +40,7 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
+        //Debug.Log(this.transform.rotation);
         float mouse_x = Input.GetAxis("Mouse X") * mouse_sens;
         float mouse_y = Input.GetAxis("Mouse Y") * mouse_sens;
         target_rotation_y += mouse_x;
@@ -44,7 +49,24 @@ public class CameraController : MonoBehaviour
 
         cameraHolder.rotation = Quaternion.Euler(target_rotation_x, target_rotation_y, 0f);
         player.Rotate(Vector3.up * mouse_x);
-
+        if (Input.GetKey(leftKey) && !Input.GetKey(rightKey))
+        {
+            DoTilt(tilt_z);
+            gun.GunFollow(tilt_z, 0.2f);
+        }
+        else
+        {
+            if (Input.GetKey(rightKey) && !Input.GetKey(leftKey))
+            {
+                DoTilt(-tilt_z);
+                gun.GunFollow(-tilt_z, -0.2f);
+            }
+            else
+            {
+                transform.DOLocalRotate(new Vector3(0, 0, 0), 0.5f);
+                gun.ResetGunFollow();
+            }
+        }
         /*if (Input.GetKey(KeyCode.Mouse0)) // throw/spawn balls
         {
             PewPew();
@@ -54,24 +76,47 @@ public class CameraController : MonoBehaviour
             shoot();
         }*/
     }
-
-    //private bool Movement()
+    private void DoTilt(float tilt_z)
+    {
+        transform.DOLocalRotate(new Vector3(0, 0, tilt_z), 1f);
+    }
+    //IEnumerator CameraTilt()
     //{
-    //    return (Input.GetKey(leftKey) || Input.GetKey(rightKey));
-    //}
-    //IEnumerator WaitUntilMove()
-    //{
-    //    while (true)
+    //    Quaternion target_left = Quaternion.Euler(0f, 0f, -5f);
+    //    Quaternion target_right = Quaternion.Euler(0f, 0f, 5f);
+    //    Quaternion target_center = Quaternion.Euler(0f, 0f, 0f);
+    //    Quaternion target;
+    //    Quaternion move = this.transform.rotation;
+    //    while (transform.rotation.z != -tiltAmount)
     //    {
-    //        transform.rotation = Quaternion.Lerp(transform.rotation.x,)
-    //        yeald return new WaitUntil(() => Movement());
-    //    }
-    //}
-    //IEnumerator WaitWhileMove()
-    //{
-    //    while (true) 
-    //    {
-    //        yeald return new WaitWhile(() => Movement());
+    //        if (Input.GetKey(leftKey) && !Input.GetKey(rightKey))
+    //        {
+    //            target = target_left;
+    //        }
+    //        else
+    //        {
+    //            if (Input.GetKey(rightKey) && !Input.GetKey(leftKey))
+    //            {
+    //                target = target_right;
+    //            }
+    //            else
+    //            {
+    //                target = target_center;
+    //            }
+    //        }
+    //        //move.x = transform.rotation.x;
+    //        //move.y = transform.rotation.y;
+    //        move.z += (target.z - transform.rotation.z) / 10;
+    //        if (Mathf.Abs(move.z) > 0.1)
+    //        {
+    //            //transform.localRotation = Quaternion.Lerp(transform.rotation, move, 2f);
+    //            transform.localRotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, move.z);   
+    //        }
+    //        //else 
+    //        //{
+    //        //    transform.localRotation = target_center;
+    //        //}
+    //        yield return new WaitForSeconds(0.01f);
     //    }
     //}
 
