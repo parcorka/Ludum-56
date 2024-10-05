@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController characterController;
 
     public float moveSmoothTime = 0.1f;
-    public float gravity = 9.8f;
+    public float gravity;
     public float jumpForce;
     public float speed;
 
