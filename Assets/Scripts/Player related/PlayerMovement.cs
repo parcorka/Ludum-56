@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -10,7 +11,16 @@ public class PlayerMovement : MonoBehaviour
     public float moveSmoothTime = 0.1f;
     public float gravity;
     public float jumpForce;
-    public float speed;
+
+    public float walkSpeed;
+    public float crouchedSpeed;
+    private float speed;
+    private bool locked;
+    private bool crouchState; // if true then the player will be crouching
+    public GameObject cameraPosition;
+    public float standingHight = 0.5f;
+    public float crouchingHight = 0.2f;
+    private float currentHight;
 
     private Vector3 playerInput;
     private Vector3 move;
@@ -18,11 +28,15 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 moveDampVelocity;
 
     private Vector3 currentForceVelocity; // mainly for gravity
-    public float hight = 1.1f; // checking distance to ground
+    public float GroundDistance = 1.1f; // checking distance to ground // unaffected by hight
 
     private void Start()
     {
         characterController = GetComponent<CharacterController>();
+        locked = false;
+        crouchState = false;
+        UpdateMovement();
+        currentHight = standingHight;
     }
     void Update()
     {
@@ -38,16 +52,19 @@ public class PlayerMovement : MonoBehaviour
         }
 
         move = transform.TransformDirection(playerInput);
-        //float currentSpeed = Input.GetKey(KeyCode.LeftShift) ? Runspeed : WalkSpeed; // for sprinting
+        //if (!locked)
+        //{
+        //    speed = crouchState ? crouchedSpeed : walkSpeed; // for sprinting
+        //}
         currentMoveVelocity = Vector3.SmoothDamp(currentMoveVelocity, move * speed, ref moveDampVelocity, moveSmoothTime);
         characterController.Move(currentMoveVelocity * Time.deltaTime);
 
         Ray groundCheckRay = new Ray(transform.position, Vector3.down);
-        if(Physics.Raycast(groundCheckRay, hight))
+        if (Physics.Raycast(groundCheckRay, GroundDistance))
         {
             currentForceVelocity.y = -2f;
 
-            if(Input.GetKey(KeyCode.Space))
+            if (Input.GetKey(KeyCode.Space))
             {
                 currentForceVelocity.y = jumpForce;
             }
@@ -57,6 +74,49 @@ public class PlayerMovement : MonoBehaviour
             currentForceVelocity.y -= gravity * Time.deltaTime;
         }
         characterController.Move(currentForceVelocity * Time.deltaTime);
-    }
 
+        if(Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            crouchState = !crouchState;
+        }
+
+        Crouch();
+    }
+    private void Crouch() 
+    {
+        //crouchState = !crouchState;
+        UpdateMovement();
+        float targetHight = crouchState ? crouchingHight : standingHight;
+        currentHight = Mathf.Lerp(currentHight, targetHight, Time.deltaTime * 3f);
+        Vector3 cameraMoveTo = cameraPosition.transform.localPosition;
+        cameraMoveTo.y = currentHight;
+        cameraPosition.transform.localPosition = cameraMoveTo;
+        
+        characterController.height = crouchState ? 0.5f : 2f;
+    }
+    public void LockMovement()
+    {
+        speed = 0;
+        crouchState = false;
+        locked = true;
+    }
+    public void UnlockMovement()
+    {
+        locked = false;
+        UpdateMovement();
+    }
+    public void UpdateMovement()
+    {
+        if (!locked)
+        {
+            if (!crouchState)
+            {
+                speed = walkSpeed;
+            }
+            else
+            {
+                speed = crouchedSpeed;
+            }
+        }
+    }
 }

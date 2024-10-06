@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class ChatBubble : MonoBehaviour
+public class ChatBubble : MonoBehaviour // not being used
 {
     public static void CreateChatBubble(Transform parent, Vector3 localPosition, string text)
     {
-        Transform chatBubbleTransform = Instantiate(GameAssets.i.pfChatBubble, parent);
-        chatBubbleTransform.localPosition = localPosition;
+        //Transform chatBubbleTransform = Instantiate(GameAssets.i.pfChatBubble, parent);
+        //chatBubbleTransform.localPosition = localPosition;
 
-        chatBubbleTransform.GetComponent<ChatBubble>().Setup(text);
+        //chatBubbleTransform.GetComponent<ChatBubble>().Setup(text);
     }
 
     private SpriteRenderer backgroundSpriteRenderer;

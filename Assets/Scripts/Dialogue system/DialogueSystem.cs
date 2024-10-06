@@ -5,16 +5,13 @@ using UnityEngine;
 
 public class DialogueSystem : MonoBehaviour
 {
-    public Transform player;
-    public Transform camera;
-    PlayerMovement pm;
-    CameraController mc;
-
-    //public GameObject popUp;
+    public PlayerMovement pm;
+    public CameraController mc;
 
     public GameObject dialogueContainer;
     public TextMeshProUGUI dialogueText;
     public TextMeshProUGUI nameText;
+    private float textSpeed;
 
     private Queue<string> sentencesQueue;
     private bool dialogueState; // are we in dialogue rn?
@@ -23,8 +20,6 @@ public class DialogueSystem : MonoBehaviour
     {
         sentencesQueue = new Queue<string>();
         dialogueState = false;
-        pm = player.GetComponent<PlayerMovement>();
-        mc = camera.GetComponent<CameraController>();
     }
 
     private void Update()
@@ -41,22 +36,22 @@ public class DialogueSystem : MonoBehaviour
     {
         return dialogueState;
     }
-    public void StartDialogue(string[] sentences, string name)
+    public void StartDialogue(Dialogue dialogue)
     {
         dialogueContainer.SetActive(true);
         dialogueState = true;
-        sentencesQueue.Clear();
-        nameText.text = name;
 
-        pm.speed = 0; // lock movement
+        pm.LockMovement();
         mc.mouse_sens = 0;
 
-        foreach (string sentence in sentences)
+        sentencesQueue.Clear();
+        nameText.text = dialogue.name;
+        this.textSpeed = dialogue.textSpeed;
+
+        foreach (string sentence in dialogue.sentences)
         {
             sentencesQueue.Enqueue(sentence);
         }
-
-        DisplayNextSentance();
     }
     private void DisplayNextSentance()
     {
@@ -72,18 +67,19 @@ public class DialogueSystem : MonoBehaviour
     private void EndDialogue()
     {
         dialogueContainer.SetActive(false);
-        pm.speed = 10;
+        pm.UnlockMovement();
         mc.mouse_sens = 10;
         dialogueState = false;
     }
 
-    IEnumerator TypeSentance(string sentence)
+    private IEnumerator TypeSentance(string sentence)
     {
         dialogueText.text = "";
         foreach (char letter in sentence.ToCharArray())
         {
             dialogueText.text += letter;
-            yield return null;
+            //Add sound
+            yield return new WaitForSeconds(textSpeed);
         }
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameAssets : MonoBehaviour
+public class GameAssets : MonoBehaviour // not being used
 {
     private static GameAssets _i;
 
@@ -15,5 +15,6 @@ public class GameAssets : MonoBehaviour
         }
     }
 
-    public Transform pfChatBubble;
+    //public Transform pfChatBubble;
+    public GameObject uiQuest;
 }
