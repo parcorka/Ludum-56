@@ -20,7 +20,7 @@ public class CameraController : MonoBehaviour
     public float tilt_z = 4f;
     public KeyCode leftKey = KeyCode.A; //A is default
     public KeyCode rightKey = KeyCode.D; //D is default
-    public GunFollowUp gun;
+    //public GunFollowUp gun; // unused
 
     private void Start()
     {
@@ -52,19 +52,19 @@ public class CameraController : MonoBehaviour
         if (Input.GetKey(leftKey) && !Input.GetKey(rightKey))
         {
             DoTilt(tilt_z);
-            gun.GunFollow(tilt_z, 0.2f);
+            //gun.GunFollow(tilt_z, 0.2f); // unused
         }
         else
         {
             if (Input.GetKey(rightKey) && !Input.GetKey(leftKey))
             {
                 DoTilt(-tilt_z);
-                gun.GunFollow(-tilt_z, -0.2f);
+                //gun.GunFollow(-tilt_z, -0.2f);// unused
             }
             else
             {
                 transform.DOLocalRotate(new Vector3(0, 0, 0), 0.5f);
-                gun.ResetGunFollow();
+                //gun.ResetGunFollow();// unused
             }
         }
         /*if (Input.GetKey(KeyCode.Mouse0)) // throw/spawn balls

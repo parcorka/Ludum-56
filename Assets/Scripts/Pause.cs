@@ -5,6 +5,7 @@ using UnityEngine;
 public class Pause : MonoBehaviour
 {
     public static bool gameIsPaused;
+    public GameObject pauseGameUI;
 
     private void Start()
     {
@@ -15,20 +16,36 @@ public class Pause : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            gameIsPaused = !gameIsPaused;
-            PauseGame();
+            if (gameIsPaused)
+            {
+                PauseGame();
+            }
+            else
+            {
+                Resume();
+            }
         }
     }
 
-    void PauseGame()
+    public void Resume()
     {
-        if (gameIsPaused)
-        {
-            Time.timeScale = 0f;
-        }
-        else
-        {
-            Time.timeScale = 1;
-        }
+        pauseGameUI.SetActive(false);
+        Time.timeScale = 1f;
+        gameIsPaused = false;
+    }
+    private void PauseGame()
+    {
+        pauseGameUI.SetActive(true);
+        Time.timeScale = 0f;
+        gameIsPaused=true;
+    }
+    public void Options()
+    {
+
+    }
+    public void QuitGame()
+    {
+        Debug.Log("Quiting the game");
+        Application.Quit();
     }
 }
