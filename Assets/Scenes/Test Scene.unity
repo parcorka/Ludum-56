@@ -236,6 +236,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d10ac4e5b093cd44aa7bbf1e4787ce34, type: 3}
       insertIndex: -1
       addedObject: {fileID: 26007126}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d10ac4e5b093cd44aa7bbf1e4787ce34, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 26007129}
   m_SourcePrefab: {fileID: 100100000, guid: d10ac4e5b093cd44aa7bbf1e4787ce34, type: 3}
 --- !u!1 &26007125 stripped
 GameObject:
@@ -321,6 +324,27 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!65 &26007129
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26007125}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.52, y: 3.52, z: 1}
+  m_Center: {x: 0, y: -0.24, z: -2.13}
 --- !u!1 &31189482 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 464767484073339184, guid: 95441ee8859767e47b813d671fbb87d4, type: 3}
@@ -6084,9 +6108,17 @@ MonoBehaviour:
   dialogueSystem: {fileID: 990730038}
   popUp: {fileID: 990730035}
   firstDialogue:
-    sentences: []
+    sentences:
+    - name: Old Roach
+      talkSound: {fileID: 8300000, guid: 9ea5a1bf15993af47bfc093cf0277bee, type: 3}
+      textSpeed: 0.05
+      sentence: 'Leave me alone '
   secondDialogue:
-    sentences: []
+    sentences:
+    - name: Old Roach
+      talkSound: {fileID: 8300000, guid: 9ea5a1bf15993af47bfc093cf0277bee, type: 3}
+      textSpeed: 0.05
+      sentence: Leave my old bones alone
   questDialogue:
     sentences:
     - name: Me
@@ -7605,7 +7637,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: d37c5c0ce2bf4a3418ea04df7863e326, type: 3}
     - target: {fileID: 1849090656277458999, guid: cdeffb3753ea4af4b856100a4db4fc3d, type: 3}
       propertyPath: mouse_sens
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1929282846732596140, guid: cdeffb3753ea4af4b856100a4db4fc3d, type: 3}
       propertyPath: m_IsActive
@@ -7665,15 +7697,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8296127452765190941, guid: cdeffb3753ea4af4b856100a4db4fc3d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.96
+      value: -7.54
       objectReference: {fileID: 0}
     - target: {fileID: 8296127452765190941, guid: cdeffb3753ea4af4b856100a4db4fc3d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 14.62
+      value: 13.7
       objectReference: {fileID: 0}
     - target: {fileID: 8296127452765190941, guid: cdeffb3753ea4af4b856100a4db4fc3d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 72.75
+      value: 73.392
       objectReference: {fileID: 0}
     - target: {fileID: 8306598807332095501, guid: cdeffb3753ea4af4b856100a4db4fc3d, type: 3}
       propertyPath: walkSpeed
@@ -11212,9 +11244,17 @@ MonoBehaviour:
   dialogueSystem: {fileID: 990730038}
   popUp: {fileID: 990730035}
   firstDialogue:
-    sentences: []
+    sentences:
+    - name: Roach
+      talkSound: {fileID: 8300000, guid: 104ae60a4f726cc4fa5e5ade8f8b82f5, type: 3}
+      textSpeed: 0.05
+      sentence: Let me rest
   secondDialogue:
-    sentences: []
+    sentences:
+    - name: Roach
+      talkSound: {fileID: 8300000, guid: 104ae60a4f726cc4fa5e5ade8f8b82f5, type: 3}
+      textSpeed: 0.05
+      sentence: Leave me
   questDialogue:
     sentences:
     - name: Me
@@ -11641,9 +11681,17 @@ MonoBehaviour:
   dialogueSystem: {fileID: 990730038}
   popUp: {fileID: 990730035}
   firstDialogue:
-    sentences: []
+    sentences:
+    - name: Bartender
+      talkSound: {fileID: 8300000, guid: 9147c934161df884694999aac1f6bef1, type: 3}
+      textSpeed: 0.05
+      sentence: Leave me
   secondDialogue:
-    sentences: []
+    sentences:
+    - name: Bartender
+      talkSound: {fileID: 8300000, guid: 9147c934161df884694999aac1f6bef1, type: 3}
+      textSpeed: 0.05
+      sentence: Leave me, i have nothung to say
   questDialogue:
     sentences:
     - name: Me
