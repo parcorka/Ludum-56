@@ -6,6 +6,7 @@ public class QuestInspect : MonoBehaviour
 {
 
     public Transform player;
+    [SerializeField] PullOutPutAway zoomer; // aka the script that zooms in or out
 
     //public DialogueSystem dialogueSystem;
     //public Dialogue dialogueOnInspection;
@@ -17,7 +18,7 @@ public class QuestInspect : MonoBehaviour
     {
         if (Vector3.Distance(player.transform.position, this.transform.position) <= 6f)
         {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            if (zoomer.ZoomState())
             {
                 if (questManager.GetMainQuestID() == myQuestID)
                 {

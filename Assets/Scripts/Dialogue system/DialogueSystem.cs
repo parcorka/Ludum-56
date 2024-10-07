@@ -8,18 +8,25 @@ public class DialogueSystem : MonoBehaviour
     public PlayerMovement pm;
     public CameraController mc;
 
+    public AudioSource audioSource;
+
     public GameObject dialogueContainer;
     public TextMeshProUGUI dialogueText;
     public TextMeshProUGUI nameText;
-    private float textSpeed;
 
-    private Queue<string> sentencesQueue;
+    private string defaultName;
+    private float defaultTextSpeed;
+    [SerializeField] AudioClip defaultTalkSound;
+
+    private Queue<Sentence> sentencesQueue;
     private bool dialogueState; // are we in dialogue rn?
 
     private void Awake()
     {
-        sentencesQueue = new Queue<string>();
+        sentencesQueue = new Queue<Sentence>();
         dialogueState = false;
+        defaultTextSpeed = 0.05f;
+        defaultName = "???";
     }
 
     private void Update()
@@ -31,6 +38,13 @@ public class DialogueSystem : MonoBehaviour
                 DisplayNextSentance();
             }
         }
+        //if(Input.GetKeyDown(KeyCode.T)) 
+        //{
+        //    Debug.Log("Playing"); 
+        //    audioSource.Stop();
+        //    audioSource.clip = defaultTalkSound;
+        //    audioSource.Play();
+        //}
     }
     public bool GetDialogueState()
     {
@@ -45,24 +59,56 @@ public class DialogueSystem : MonoBehaviour
         mc.mouse_sens = 0;
 
         sentencesQueue.Clear();
-        nameText.text = dialogue.name;
-        this.textSpeed = dialogue.textSpeed;
+        //nameText.text = dialogue.name;
+        //this.textSpeed = dialogue.textSpeed;
 
-        foreach (string sentence in dialogue.sentences)
+        foreach (Sentence sentence in dialogue.sentences)
         {
+            
             sentencesQueue.Enqueue(sentence);
         }
     }
     private void DisplayNextSentance()
     {
+        string sentence, name;
+        AudioClip talkSound;
+        float textSpeed;
         if (sentencesQueue.Count == 0)
         {
             EndDialogue(); // no sentences left then end dialogue
             return;
         }
-        string sentence = sentencesQueue.Dequeue();
+
+        Sentence newSentence = sentencesQueue.Dequeue();
+        
+        sentence = newSentence.sentence;
+        if(newSentence.talkSound != null)
+        {
+            talkSound = newSentence.talkSound;
+        }
+        else
+        {
+            talkSound = defaultTalkSound;
+        }
+        if(newSentence.name != null)
+        {
+            name = newSentence.name;
+        }
+        else
+        {
+            name = defaultName;
+        }
+        if (newSentence.textSpeed != null)
+        {
+            textSpeed = newSentence.textSpeed;
+        }
+        else
+        {
+            textSpeed = defaultTextSpeed;
+        }
+
         StopAllCoroutines(); // stop currently running sentence
-        StartCoroutine(TypeSentance(sentence));
+        StartCoroutine(TypeSentance(sentence, talkSound, name, textSpeed));
     }
     private void EndDialogue()
     {
@@ -72,14 +118,17 @@ public class DialogueSystem : MonoBehaviour
         dialogueState = false;
     }
 
-    private IEnumerator TypeSentance(string sentence)
+    private IEnumerator TypeSentance(string sentence, AudioClip talkSound, string name, float textSpeed)
     {
+        nameText.text = name;
         dialogueText.text = "";
+        audioSource.clip = talkSound;
+        audioSource.Play();
         foreach (char letter in sentence.ToCharArray())
         {
             dialogueText.text += letter;
-            //Add sound
             yield return new WaitForSeconds(textSpeed);
         }
+        audioSource.Stop();
     }
 }
