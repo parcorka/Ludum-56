@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0a4bfbd05803be3439bb3d4f161b6acf
+guid: a04ad3546be14a141ab36a67f76dafb3
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -31,11 +31,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Armature|homyak_eats
-      takeName: Armature|homyak_eats
-      internalID: -3825976653763628565
+      name: lupa static
+      takeName: lupa static
+      internalID: -3551734255515220304
       firstFrame: 0
-      lastFrame: 19
+      lastFrame: 10
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

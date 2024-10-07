@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0a4bfbd05803be3439bb3d4f161b6acf
+guid: 1842e854d34b7c449bbb1160d06d8b1f
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -31,11 +31,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Armature|homyak_eats
-      takeName: Armature|homyak_eats
-      internalID: -3825976653763628565
+      name: tarakan_pov
+      takeName: tarakan_pov
+      internalID: -8724070621890542421
       firstFrame: 0
-      lastFrame: 19
+      lastFrame: 118
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
