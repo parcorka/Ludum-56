@@ -4907,6 +4907,91 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!64 &722519394
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 722519392}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
+--- !u!114 &722519395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 722519392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4db233048f2903a4597b9e7add8820d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 990730036}
+  dialogueSystem: {fileID: 990730038}
+  popUp: {fileID: 990730035}
+  firstDialogue:
+    sentences:
+    - name: Nurse
+      talkSound: {fileID: 8300000, guid: 9ea5a1bf15993af47bfc093cf0277bee, type: 3}
+      textSpeed: 0.05
+      sentence: ...
+  secondDialogue:
+    sentences:
+    - name: Nurse
+      talkSound: {fileID: 8300000, guid: 9ea5a1bf15993af47bfc093cf0277bee, type: 3}
+      textSpeed: 0.05
+      sentence: ...
+  questDialogue:
+    sentences:
+    - name: Me
+      talkSound: {fileID: 0}
+      textSpeed: 0.05
+      sentence: 'I was told about a whole dead roach, but there is only half of him. '
+    - name: Nurse
+      talkSound: {fileID: 8300000, guid: 9ea5a1bf15993af47bfc093cf0277bee, type: 3}
+      textSpeed: 0.05
+      sentence: "Oh, detective, what a sense of humor you have. It\u2019s definitely
+        the mayor, there\u2019s his hat."
+    - name: Nurse
+      talkSound: {fileID: 8300000, guid: 9ea5a1bf15993af47bfc093cf0277bee, type: 3}
+      textSpeed: 0.05
+      sentence: Plus, his assistant identified him right away. He arrived almost
+        at the same time as the body and confirmed it was the mayor.
+    - name: Me
+      talkSound: {fileID: 8300000, guid: 0cee0ea9166249946b4dc70a58e49f69, type: 3}
+      textSpeed: 0.05
+      sentence: And where is this assistant?
+    - name: Nurse
+      talkSound: {fileID: 8300000, guid: 9ea5a1bf15993af47bfc093cf0277bee, type: 3}
+      textSpeed: 0.05
+      sentence: "He said work can\u2019t wait and left. "
+    - name: Me
+      talkSound: {fileID: 8300000, guid: 9ea5a1bf15993af47bfc093cf0277bee, type: 3}
+      textSpeed: 0.05
+      sentence: 'Hmm, interesting. '
+  myQuestID: 2
+  questManager: {fileID: 990730037}
+  startQuest:
+    questName: Inspect the body
+    description: (Press left mouse button)
+  endQuest:
+    questName: 'Quest: Talk to the nurses'
+    description: 
 --- !u!1001 &733178741
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6588,6 +6673,64 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &965580259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 965580256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4db233048f2903a4597b9e7add8820d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 990730036}
+  dialogueSystem: {fileID: 990730038}
+  popUp: {fileID: 990730035}
+  firstDialogue:
+    sentences:
+    - name: Chief
+      talkSound: {fileID: 8300000, guid: 104ae60a4f726cc4fa5e5ade8f8b82f5, type: 3}
+      textSpeed: 0.05
+      sentence: "Now get out, I\u2019ve got a lot to do."
+  secondDialogue:
+    sentences:
+    - name: Chief
+      talkSound: {fileID: 8300000, guid: 104ae60a4f726cc4fa5e5ade8f8b82f5, type: 3}
+      textSpeed: 0.05
+      sentence: "Now get out, I\u2019ve got a lot to do."
+  questDialogue:
+    sentences:
+    - name: Me
+      talkSound: {fileID: 8300000, guid: 0cee0ea9166249946b4dc70a58e49f69, type: 3}
+      textSpeed: 0.05
+      sentence: What about the murder? Any details?
+    - name: Chief
+      talkSound: {fileID: 8300000, guid: 104ae60a4f726cc4fa5e5ade8f8b82f5, type: 3}
+      textSpeed: 0.05
+      sentence: You'll find it out by yourself. The body is in the hospital.
+    - name: Me
+      talkSound: {fileID: 8300000, guid: 0cee0ea9166249946b4dc70a58e49f69, type: 3}
+      textSpeed: 0.05
+      sentence: Who got killed? Another gatherer?
+    - name: Chief
+      talkSound: {fileID: 8300000, guid: 104ae60a4f726cc4fa5e5ade8f8b82f5, type: 3}
+      textSpeed: 0
+      sentence: "The mayor. Now get out, I\u2019ve got a lot to do."
+    - name: Me
+      talkSound: {fileID: 8300000, guid: 104ae60a4f726cc4fa5e5ade8f8b82f5, type: 3}
+      textSpeed: 0
+      sentence: "The mayor? Oh, that\u2019s why I\u2019m the only one solving this
+        case. (No one loves that guy)"
+  myQuestID: 1
+  questManager: {fileID: 990730037}
+  startQuest:
+    questName: 'Quest: Talk to the nurses.'
+    description: Go to the hospital
+  endQuest:
+    questName: 'Quest: Find out about the murder.'
+    description: 
 --- !u!1 &968051161 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8958848240336215026, guid: 95441ee8859767e47b813d671fbb87d4, type: 3}
@@ -6782,6 +6925,49 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cdeffb3753ea4af4b856100a4db4fc3d, type: 3}
+--- !u!1 &990730035 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1458020655233639924, guid: cdeffb3753ea4af4b856100a4db4fc3d, type: 3}
+  m_PrefabInstance: {fileID: 990730034}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &990730036 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8296127452765190941, guid: cdeffb3753ea4af4b856100a4db4fc3d, type: 3}
+  m_PrefabInstance: {fileID: 990730034}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &990730037 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2238282476600705249, guid: cdeffb3753ea4af4b856100a4db4fc3d, type: 3}
+  m_PrefabInstance: {fileID: 990730034}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1713ad98a5771884ea1e029cd37d5dbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &990730038 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8786106319298127164, guid: cdeffb3753ea4af4b856100a4db4fc3d, type: 3}
+  m_PrefabInstance: {fileID: 990730034}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b31b9304d37d9094ca0e40e1be459aed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &990730039 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1942647325696766932, guid: cdeffb3753ea4af4b856100a4db4fc3d, type: 3}
+  m_PrefabInstance: {fileID: 990730034}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5197b7b39d2c05b4c9007dec549dc376, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &995791087
 GameObject:
   m_ObjectHideFlags: 0
@@ -12132,8 +12318,77 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cbabae7aa6ed71a42bfd0f8787c924bf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1698528742}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cbabae7aa6ed71a42bfd0f8787c924bf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1698528741}
   m_SourcePrefab: {fileID: 100100000, guid: cbabae7aa6ed71a42bfd0f8787c924bf, type: 3}
+--- !u!1 &1698528740 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: cbabae7aa6ed71a42bfd0f8787c924bf, type: 3}
+  m_PrefabInstance: {fileID: 1698528739}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1698528741
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1698528740}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
+--- !u!114 &1698528742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1698528740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dd8fe4c02c2d864f8652c83a7f9cc09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 990730036}
+  zoomer: {fileID: 990730039}
+  dialogueSystem: {fileID: 990730038}
+  dialogueOnInspection:
+    sentences:
+    - name: Me
+      talkSound: {fileID: 8300000, guid: 0cee0ea9166249946b4dc70a58e49f69, type: 3}
+      textSpeed: 0.01
+      sentence: "(It\u2019s definitely a corpse. The question is, who\u2019s the
+        killer? For now, the prime suspect is the mayor\u2019s assistant. Or anyone,
+        really. No one in this town liked the mayor. Even some drunkard could have
+        done it. )"
+    - name: Me
+      talkSound: {fileID: 0}
+      textSpeed: 0
+      sentence: "(I need to find witnesses and evidence, guesses won\u2019t cut it.)"
+  myQuestID: 3
+  questManager: {fileID: 990730037}
+  endQuest:
+    questName: Inspect the body
+    description: 
+  startQuest:
+    questName: 'Quest: Question people about the mayor '
+    description: The bar might be the right place
 --- !u!1 &1700257664 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -7640558969779515294, guid: 35d65f46d28395942aecaee439e696e7, type: 3}
@@ -13852,6 +14107,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d10ac4e5b093cd44aa7bbf1e4787ce34, type: 3}
       insertIndex: -1
       addedObject: {fileID: 965580258}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d10ac4e5b093cd44aa7bbf1e4787ce34, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 965580259}
   m_SourcePrefab: {fileID: 100100000, guid: d10ac4e5b093cd44aa7bbf1e4787ce34, type: 3}
 --- !u!1 &1821770422
 GameObject:
@@ -15229,6 +15487,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1f12865e125cc4749aa468b2da87b548, type: 3}
       insertIndex: -1
       addedObject: {fileID: 722519393}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1f12865e125cc4749aa468b2da87b548, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 722519395}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1f12865e125cc4749aa468b2da87b548, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 722519394}
   m_SourcePrefab: {fileID: 100100000, guid: 1f12865e125cc4749aa468b2da87b548, type: 3}
 --- !u!1 &2004413186
 GameObject:

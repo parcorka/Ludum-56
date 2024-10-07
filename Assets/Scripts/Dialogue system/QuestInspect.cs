@@ -6,23 +6,25 @@ public class QuestInspect : MonoBehaviour
 {
 
     public Transform player;
+    [SerializeField] PullOutPutAway zoomer; // aka the script that zooms in or out
 
-    //public DialogueSystem dialogueSystem;
-    //public Dialogue dialogueOnInspection;
+    public DialogueSystem dialogueSystem;
+    public Dialogue dialogueOnInspection;
     public int myQuestID;
     public QuestManager questManager;
     public Quest endQuest;
+    public Quest startQuest;
 
     private void OnMouseOver()
     {
         if (Vector3.Distance(player.transform.position, this.transform.position) <= 6f)
         {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            if (zoomer.ZoomState())
             {
                 if (questManager.GetMainQuestID() == myQuestID)
                 {
-                    //dialogueSystem.StartDialogue(dialogueOnInspection);
-                    //StartCoroutine(WaitForDialogueEnd());
+                    dialogueSystem.StartDialogue(dialogueOnInspection);
+                    StartCoroutine(WaitForDialogueEnd());
                     AdvanceQuest();
                 }
             }
@@ -34,11 +36,18 @@ public class QuestInspect : MonoBehaviour
         {
             questManager.CompliteQuest(endQuest);
         }
+        if (startQuest != null && questManager != null)
+        {
+            if (!startQuest.IsActive)
+            {
+                questManager.StartQuest(startQuest);
+            }
+        }
     }
-    //private IEnumerator WaitForDialogueEnd()
-    //{
-    //    yield return new WaitUntil(() => (!dialogueSystem.GetDialogueState()));
-    //    //Debug.Log("WaitForDialogueEnd ended by " + questDialogue.name);
-    //    AdvanceQuest();
-    //}
+    private IEnumerator WaitForDialogueEnd()
+    {
+        yield return new WaitUntil(() => (!dialogueSystem.GetDialogueState()));
+        //Debug.Log("WaitForDialogueEnd ended by " + questDialogue.name);
+        AdvanceQuest();
+    }
 }
