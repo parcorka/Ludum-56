@@ -13,6 +13,7 @@ public class QuestManager : MonoBehaviour
     public TextMeshProUGUI questUIText;
 
     private int mainQuestID; // better intaractions with quest npc (they will check if they need to give a quest)
+    public QuestBlockRemoval blockMove;
 
     private void Start()
     {
@@ -35,6 +36,10 @@ public class QuestManager : MonoBehaviour
             questUIText.text = quest.description;
 
             mainQuestID++;
+            //if(mainQuestID == x)
+            //{
+            //    blockMove.MoveBlock();
+            //}
         }
     }
     public void CompliteQuest(Quest quest)
