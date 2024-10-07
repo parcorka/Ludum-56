@@ -1167,7 +1167,7 @@ MonoBehaviour:
       textSpeed: 0.05
       sentence: I need to ask the chief about THOSE news.
   myQuestID: 0
-  questManager: {fileID: 0}
+  questManager: {fileID: 990730037}
   startQuest:
     questName: 'Find out about the murder. '
     description: Talk to the chief
