@@ -36,10 +36,10 @@ public class QuestManager : MonoBehaviour
             questUIText.text = quest.description;
 
             mainQuestID++;
-            //if(mainQuestID == x)
-            //{
-            //    blockMove.MoveBlock();
-            //}
+            if (mainQuestID == 7)
+            {
+                blockMove.MoveBlock();
+            }
         }
     }
     public void CompliteQuest(Quest quest)

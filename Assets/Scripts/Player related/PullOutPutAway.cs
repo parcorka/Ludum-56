@@ -9,6 +9,7 @@ public class PullOutPutAway : MonoBehaviour
     private Animator mAnimator;
     public Camera playerPOV;
     private bool zoomState;
+    private bool dialogueTime;
     private float normalZoom;
     private float zoomedZoom;
     private float currentZoom;
@@ -18,6 +19,7 @@ public class PullOutPutAway : MonoBehaviour
     {
         mAnimator = GetComponent<Animator>();
         zoomState = false;
+        dialogueTime = false;
         normalZoom = 60f;
         zoomedZoom = 30f;
     }
@@ -25,7 +27,7 @@ public class PullOutPutAway : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0))
+        if(Input.GetMouseButtonDown(0) && !dialogueTime)
         {
             if (!zoomState)
             {
@@ -39,6 +41,14 @@ public class PullOutPutAway : MonoBehaviour
             }
         }
         Zoom();
+    }
+    public void DialogueTime()
+    {
+        dialogueTime = true;
+    }
+    public void FreeZoom()
+    {
+        dialogueTime = false;
     }
     public bool ZoomState()
     {

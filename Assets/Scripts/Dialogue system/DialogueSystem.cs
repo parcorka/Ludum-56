@@ -7,6 +7,7 @@ public class DialogueSystem : MonoBehaviour
 {
     public PlayerMovement pm;
     public CameraController mc;
+    public PullOutPutAway popa; // da popa
 
     public AudioSource audioSource;
 
@@ -57,6 +58,7 @@ public class DialogueSystem : MonoBehaviour
 
         pm.LockMovement();
         mc.mouse_sens = 0;
+        popa.DialogueTime();
 
         sentencesQueue.Clear();
         //nameText.text = dialogue.name;
@@ -115,6 +117,7 @@ public class DialogueSystem : MonoBehaviour
         dialogueContainer.SetActive(false);
         pm.UnlockMovement();
         mc.mouse_sens = 10;
+        popa.FreeZoom();
         dialogueState = false;
     }
 

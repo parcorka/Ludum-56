@@ -4,6 +4,7 @@ using System.Threading;
 using Unity.VisualScripting;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.Animations;
 
 public class CameraController : MonoBehaviour
 {
@@ -76,6 +77,10 @@ public class CameraController : MonoBehaviour
             shoot();
         }*/
     }
+    //public void Look(Transform target)
+    //{
+    //    cameraHolder.DOLocalRotate(target.position, 2f);
+    //}
     private void DoTilt(float tilt_z)
     {
         transform.DOLocalRotate(new Vector3(0, 0, tilt_z), 1f);
